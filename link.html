@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taktik - Uygulamayı İndir</title>
+    
+    <meta property="og:title" content="Taktik - Sınavlara Hazırlık">
+    <meta property="og:description" content="Taktik uygulamasını hemen indir ve çalışmaya başla.">
+    
+    <script>
+        function redirect() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // iOS (App Store) Yönlendirmesi
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // Buraya Taktik iOS App ID'ni yaz
+                window.location.replace("https://apps.apple.com/us/app/taktik-ko%C3%A7-yks-lgs-kpss-ags/id6755930518");
+                return;
+            }
+
+            // Android (Google Play) Yönlendirmesi
+            if (/android/i.test(userAgent)) {
+                // Buraya Taktik Android paket adını yaz
+                window.location.replace("https://play.google.com/store/apps/details?id=com.codenzi.taktik");
+                return;
+            }
+
+            // Masaüstü veya diğer cihazlar için ana sayfaya yönlendir
+            window.location.replace("https://taktik.codenzi.com");
+        }
+    </script>
+</head>
+<body onload="redirect()" style="font-family: Arial, sans-serif; text-align: center; padding-top: 50px;">
+    <h2>Taktik Mağazaya Yönlendiriliyor...</h2>
+    <p>Otomatik olarak yönlendirilmezseniz <a href="https://taktik.codenzi.com">buraya tıklayın</a>.</p>
+</body>
+</html>
