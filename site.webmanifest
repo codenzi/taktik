@@ -1,0 +1,13 @@
+{
+  "name": "Taktik AI: Sınavlara Hazırlık",
+  "short_name": "Taktik",
+  "lang": "tr",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/logo_inapp.webp", "sizes": "320x320", "type": "image/webp" }
+  ]
+}
