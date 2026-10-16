@@ -3,93 +3,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taktik Koç - Uygulamayı İndir</title>
+    <title id="meta-title">Taktik AI: Sınavlara Hazırlık</title>
     
-    <meta property="og:title" content="Taktik Koç - Sınavlara Hazırlık">
-    <meta property="og:description" content="Taktik Koç uygulamasını hemen indir ve hedeflerine ulaş.">
-    
-    <script>
-        // Timeout'u kontrol edebilmek için global bir değişken tanımlıyoruz
-        var fallbackTimer;
+    <meta id="og-title" property="og:title" content="Taktik AI: Sınavlara Hazırlık">
+    <meta id="og-desc" property="og:description" content="Taktik AI uygulamasını hemen indir ve hedeflerine ulaş.">
+    <meta property="og:image" content="https://taktik.codenzi.com/logo_inapp.webp">
 
-        function redirect(isManualClick = false) {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            
-            // Modern iPad'ler kendini Mac olarak tanıtır, maxTouchPoints ile yakalıyoruz
-            var isIOS = /iPad|iPhone|iPod/.test(userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-            var isAndroid = /android/i.test(userAgent);
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap">
+    <meta name="theme-color" content="#f3f0ff">
+    <link rel="icon" type="image/webp" href="logo_inapp.webp">
+    <link rel="apple-touch-icon" href="logo_inapp.webp">
 
-            if (isIOS) {
-                // Doğrudan App Store uygulamasını açmaya zorlar
-                window.location.href = "itms-apps://apps.apple.com/app/id6755930518";
-                
-                // Eğer cihazda App Store açılamazsa (veya tarayıcı engellerse) normal web linkine düş
-                fallbackTimer = setTimeout(function() {
-                    window.location.href = "https://apps.apple.com/tr/app/taktik-ko%C3%A7-yks-lgs-kpss-ags/id6755930518";
-                }, 1500);
-                return;
-            }
+    <style>
+        :root {
+            --bg-base: #f3f0ff;
+            --surface-glass: rgba(255, 255, 255, 0.86);
+            --border-glass: #e6e9ef;
+            --text-primary: #0b0d12;
+            --text-secondary: #5b6474;
+            --accent: #6d4aff;
+        }
 
-            if (isAndroid) {
-                // Doğrudan Google Play uygulamasını açmaya zorlar (Intent kullanımı)
-                window.location.href = "intent://details?id=com.codenzi.taktik#Intent;scheme=market;package=com.android.vending;end;";
-                
-                // Intent başarısız olursa normal Play Store web linkine düş
-                fallbackTimer = setTimeout(function() {
-                    window.location.href = "https://play.google.com/store/apps/details?id=com.codenzi.taktik";
-                }, 1500);
-                return;
-            }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-            // Masaüstü veya tespit edilemeyen cihazlar
-            if (!isManualClick) {
-                window.location.replace("https://taktik.codenzi.com");
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            background: linear-gradient(160deg, #ece6ff 0%, #e6f0ff 50%, #ffe9f1 100%);
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            padding: 24px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .card {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 420px;
+            background: var(--surface-glass);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 36px;
+            padding: 44px 32px;
+            text-align: center;
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 32px 64px -28px rgba(16, 24, 40, 0.28);
+        }
+
+        /* App Icon - Apple Squircle stili */
+        .app-icon-wrapper {
+            position: relative;
+            width: 104px;
+            height: 104px;
+            margin: 0 auto 28px;
+        }
+
+        .app-icon {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 14px 28px -12px rgba(109, 74, 255, 0.45), 0 0 0 1px rgba(15, 23, 42, 0.06);
+        }
+
+        /* Yönlendirme göstergesi: ikonun altında ince ilerleme çubuğu */
+        .loading-ring {
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            bottom: -16px;
+            height: 3px;
+            border-radius: 3px;
+            background: rgba(109, 74, 255, 0.15);
+            overflow: hidden;
+        }
+
+        .loading-ring::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 40%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #6d4aff, #3b82f6);
+            animation: ringPulse 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes ringPulse {
+            0% { left: -40%; }
+            100% { left: 100%; }
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Sektör Standardı Store Butonları */
+        .btn-store {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 13px 20px;
+            background: #ffffff;
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            cursor: pointer;
+            gap: 16px;
+        }
+
+        .btn-store:hover {
+            background: #f8f6ff;
+            border-color: #cfc4ff;
+            transform: translateY(-2px);
+        }
+
+        .btn-store:active {
+            transform: scale(0.98);
+        }
+
+        .store-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-primary);
+            flex-shrink: 0;
+        }
+
+        .store-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            line-height: 1.15;
+        }
+
+        .store-subtitle {
+            font-size: 10.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .store-title {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        /* Tekil Birincil Buton (Mobil yönlendirme için) */
+        .btn-direct {
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #6d4aff 0%, #4f6bff 100%);
+            color: #ffffff;
+            border-radius: 18px;
+            font-weight: 700;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 12px 24px -12px rgba(109, 74, 255, 0.6);
+        }
+
+        .btn-direct:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+
+        .btn-direct:active {
+            transform: scale(0.98);
+        }
+
+        .btn-store:focus-visible,
+        .btn-direct:focus-visible,
+        .brand-signature:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        /* Codenzi imzası */
+        .brand-signature {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667085;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .brand-signature img {
+            height: 14px;
+            width: auto;
+        }
+
+        .brand-signature:hover {
+            color: var(--text-primary);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .loading-ring {
+                animation-duration: 3s;
             }
         }
 
-        // Sayfa yüklendiğinde otomatik yönlendirmeyi dene
-        window.onload = function() {
-            redirect(false);
+        .hidden {
+            display: none !important;
+        }
+    </style>
+
+    <script>
+        var fallbackTimer;
+
+        var i18n = {
+            tr: {
+                title: "Taktik AI: Sınavlara Hazırlık",
+                ogTitle: "Taktik AI: Sınavlara Hazırlık",
+                ogDesc: "Taktik AI uygulamasını hemen indir ve hedeflerine ulaş.",
+                redirectingTitle: "Taktik AI Açılıyor",
+                redirectingDesc: "Mağazaya yönlendiriliyorsunuz. Uygulama açılmazsa dokunun:",
+                btnFallback: "Mağazayı Aç",
+                desktopTitle: "Taktik AI: Sınavlara Hazırlık",
+                desktopDesc: "Kullandığın platformu seçerek hemen indir:",
+                iosBadgeSub: "App Store'dan",
+                androidBadgeSub: "Google Play'den",
+                iosBadgeMain: "İndirin",
+                androidBadgeMain: "Edinin",
+                iosUrl: "https://apps.apple.com/tr/app/taktik-ko%C3%A7-yks-lgs-kpss-ags/id6755930518",
+                androidUrl: "https://play.google.com/store/apps/details?id=com.codenzi.taktik&hl=tr"
+            },
+            en: {
+                title: "Taktik AI: Sınavlara Hazırlık",
+                ogTitle: "Taktik AI: Sınavlara Hazırlık",
+                ogDesc: "Download Taktik AI and reach your exam goals.",
+                redirectingTitle: "Opening Taktik AI",
+                redirectingDesc: "Redirecting to your store. Tap below if nothing happens:",
+                btnFallback: "Open Store",
+                desktopTitle: "Taktik AI: Sınavlara Hazırlık",
+                desktopDesc: "Select your platform to download the app:",
+                iosBadgeSub: "Download on the",
+                androidBadgeSub: "GET IT ON",
+                iosBadgeMain: "App Store",
+                androidBadgeMain: "Google Play",
+                iosUrl: "https://apps.apple.com/app/id6755930518",
+                androidUrl: "https://play.google.com/store/apps/details?id=com.codenzi.taktik&hl=en"
+            }
         };
 
-        // YENİ EKLENEN KISIM: Page Visibility API
-        // Eğer mağaza başarıyla açılırsa cihazın tarayıcısı arka plana düşer (hidden olur).
-        // Bu durumda gereksiz yere web mağazasına yönlenmeyi iptal ediyoruz.
+        var userLang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+        var currentLang = userLang.startsWith("tr") ? "tr" : "en";
+        var content = i18n[currentLang];
+
+        var iosScheme = "itms-apps://apps.apple.com/app/id6755930518";
+        var androidIntent = "intent://details?id=com.codenzi.taktik#Intent;scheme=market;package=com.android.vending;end;";
+
+        function applyTranslations() {
+            document.documentElement.lang = currentLang;
+            document.getElementById("meta-title").innerText = content.title;
+            document.getElementById("og-title").setAttribute("content", content.ogTitle);
+            document.getElementById("og-desc").setAttribute("content", content.ogDesc);
+
+            document.getElementById("redirect-title").innerText = content.redirectingTitle;
+            document.getElementById("redirect-desc").innerText = content.redirectingDesc;
+            document.getElementById("btn-manual-redirect").innerText = content.btnFallback;
+
+            document.getElementById("desktop-title").innerText = content.desktopTitle;
+            document.getElementById("desktop-desc").innerText = content.desktopDesc;
+
+            document.getElementById("ios-sub").innerText = content.iosBadgeSub;
+            document.getElementById("ios-main").innerText = content.iosBadgeMain;
+            document.getElementById("android-sub").innerText = content.androidBadgeSub;
+            document.getElementById("android-main").innerText = content.androidBadgeMain;
+
+            document.getElementById("link-ios").href = content.iosUrl;
+            document.getElementById("link-android").href = content.androidUrl;
+        }
+
+        function getPlatform() {
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
+            var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            var isAndroid = /android/i.test(ua);
+            return { isIOS: isIOS, isAndroid: isAndroid };
+        }
+
+        function triggerRedirect(isManual) {
+            var platform = getPlatform();
+
+            if (platform.isIOS) {
+                window.location.href = iosScheme;
+                fallbackTimer = setTimeout(function() {
+                    window.location.href = content.iosUrl;
+                }, 1500);
+                return;
+            }
+
+            if (platform.isAndroid) {
+                window.location.href = androidIntent;
+                fallbackTimer = setTimeout(function() {
+                    window.location.href = content.androidUrl;
+                }, 1500);
+                return;
+            }
+
+            // Desktop / Unknown
+            document.getElementById("state-loading").classList.add("hidden");
+            document.getElementById("state-desktop").classList.remove("hidden");
+            document.getElementById("ring").classList.add("hidden");
+        }
+
+        window.onload = function() {
+            applyTranslations();
+            var platform = getPlatform();
+
+            if (platform.isIOS || platform.isAndroid) {
+                triggerRedirect(false);
+            } else {
+                // Masaüstü: eskisi gibi web sitesine yönlendir
+                window.location.replace("https://taktik.codenzi.com");
+            }
+        };
+
         document.addEventListener("visibilitychange", function() {
             if (document.hidden && fallbackTimer) {
                 clearTimeout(fallbackTimer);
             }
         });
     </script>
-    <style>
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            text-align: center; 
-            padding-top: 80px; 
-            background-color: #f8f9fa; 
-            color: #333;
-        }
-        h2 { font-size: 24px; margin-bottom: 10px; }
-        p { font-size: 16px; color: #666; margin-bottom: 30px; }
-        .btn { 
-            display: inline-block; 
-            padding: 14px 32px; 
-            font-size: 18px; 
-            color: white; 
-            background-color: #007bff; 
-            text-decoration: none; 
-            border-radius: 12px; 
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
-            transition: background-color 0.3s;
-        }
-        .btn:hover { background-color: #0056b3; }
-    </style>
 </head>
 <body>
-    <h2>Taktik Koç Mağazaya Yönlendiriliyor...</h2>
-    <p>Mağaza uygulaması otomatik açılmazsa, aşağıdaki butona tıkla.</p>
-    
-    <a href="javascript:void(0);" onclick="redirect(true)" class="btn">Mağazaya Git</a>
+
+    <div class="card">
+        <div class="app-icon-wrapper">
+            <div id="ring" class="loading-ring"></div>
+            <img src="logo_inapp.webp" alt="Taktik AI Logo" class="app-icon">
+        </div>
+
+        <!-- Mobil Cihazlar: Otomatik Yönlendirme Durumu -->
+        <div id="state-loading">
+            <h1 id="redirect-title">Taktik AI Açılıyor</h1>
+            <p id="redirect-desc">Mağazaya yönlendiriliyorsunuz...</p>
+            <div class="actions">
+                <button id="btn-manual-redirect" onclick="triggerRedirect(true)" class="btn-direct">Mağazayı Aç</button>
+            </div>
+        </div>
+
+        <!-- Masaüstü: Resmi Standart Store Seçim Kartları -->
+        <div id="state-desktop" class="hidden">
+            <h1 id="desktop-title">Taktik AI: Sınavlara Hazırlık</h1>
+            <p id="desktop-desc">Kullandığın platformu seçerek hemen indir:</p>
+            
+            <div class="actions">
+                <a id="link-ios" href="#" target="_blank" rel="noopener noreferrer" class="btn-store">
+                    <svg class="store-icon" viewBox="0 0 384 512">
+                        <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+                    </svg>
+                    <div class="store-meta">
+                        <span id="ios-sub" class="store-subtitle">Download on the</span>
+                        <span id="ios-main" class="store-title">App Store</span>
+                    </div>
+                </a>
+
+                <a id="link-android" href="#" target="_blank" rel="noopener noreferrer" class="btn-store">
+                    <svg class="store-icon" viewBox="0 0 512 512">
+                        <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
+                    </svg>
+                    <div class="store-meta">
+                        <span id="android-sub" class="store-subtitle">GET IT ON</span>
+                        <span id="android-main" class="store-title">Google Play</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <a class="brand-signature" href="https://www.codenzi.com" aria-label="Codenzi">
+        <img src="https://www.codenzi.com/assets/img/codenzi-mark.png" width="26" height="14" alt="">
+        Codenzi
+    </a>
+
 </body>
 </html>
