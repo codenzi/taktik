@@ -1,0 +1,44 @@
+# Taktik AI: Sınavlara Hazırlık
+
+> Taktik AI (kısaca Taktik), Codenzi tarafından geliştirilen, Türkiye'deki sınavlara hazırlanan öğrenciler için yapay zeka destekli bir mobil sınav hazırlık uygulamasıdır. YKS (TYT-AYT), LGS, KPSS, AGS, DGS, ALES, TUS ve DUS'a hazırlananlara fotoğrafla soru çözücü, kişisel haftalık çalışma programı, deneme analizi, sesli ders (podcast), oyunlarla öğrenme ve özel ders asistanı sunar. iOS ve Android'de ücretsiz indirilir; tüm özelliklerin sınırsız kullanımı için uygulama içi Taktik Pro aboneliği vardır.
+
+## Temel bilgiler
+
+- Uygulama adı: Taktik AI: Sınavlara Hazırlık (Taktik)
+- Geliştirici: Codenzi (https://www.codenzi.com)
+- Platformlar: iPhone ve iPad (iOS 13 ve üzeri), Android
+- Dil: Türkçe
+- Fiyat: Ücretsiz indirme, uygulama içi satın alma (Taktik Pro)
+- Puan: Google Play'de 4,7 (2.200+ değerlendirme), App Store'da 4,5
+- İndirme: Google Play'de 100.000+
+- Desteklenen sınavlar: YKS (TYT, AYT), LGS, KPSS, AGS, DGS, ALES, TUS, DUS
+- Web sitesi: https://taktik.codenzi.com/
+- App Store: https://apps.apple.com/tr/app/taktik-ai-s%C4%B1navlara-haz%C4%B1rl%C4%B1k/id6755930518
+- Google Play: https://play.google.com/store/apps/details?id=com.codenzi.taktik
+- İletişim: info@codenzi.com
+
+## Özellikler
+
+- Fotoğrafla soru çözücü: Sorunun fotoğrafı çekilir; yapay zeka (Taktik Tavşan) adım adım açıklamalı çözüm, sınavda kısa yol ve "aklında olsun" ipuçları verir.
+- Dinamik haftalık çalışma programı: Hedef, deneme netleri ve müsait saatlere göre kişiye özel plan.
+- Özel ders: Yapay zeka asistanıyla birebir konu anlatımı ve soru-cevap.
+- Taktik Podcast: Notlar, PDF'ler ve fotoğraflar 8 farklı eğitmen sesiyle sesli derse dönüştürülür.
+- Taktik Oyunları: Yazım yanlışı bulma, yazar-eser eşleştirme, dört işlem maratonu, interaktif Türkiye haritası.
+- Deneme analizi: Net trendi, branş bazlı gelişim ve zayıf konular.
+- Dönüştürücü: PDF ve notlardan özet, bilgi kartı ve test üretimi.
+- Etüt odası, zihin haritaları, Pomodoro sayacı, Arena liderlik tablosu, gün serisi ve rozetler.
+
+## Rehberler
+
+- [YKS hazırlık rehberi](https://taktik.codenzi.com/yks/): TYT-AYT yapısı, örnek haftalık program, çalışma adımları
+- [LGS hazırlık rehberi](https://taktik.codenzi.com/lgs/): LGS soru dağılımı ve 8. sınıf için örnek program
+- [KPSS hazırlık rehberi](https://taktik.codenzi.com/kpss/): GY-GK konuları, sık yapılan hatalar, çalışan adaylar için plan
+- [AGS hazırlık rehberi](https://taktik.codenzi.com/ags/): Akademi Giriş Sınavı kapsamı ve AGS-ÖABT birlikte hazırlık
+- [Haftalık ders çalışma programı](https://taktik.codenzi.com/haftalik-calisma-programi/): 7 adımda program hazırlama
+- [Fotoğrafla soru çözme](https://taktik.codenzi.com/soru-cozucu/): Yapay zeka soru çözücünün kullanımı
+
+## Kurumsal
+
+- [Taktik hakkında](https://taktik.codenzi.com/hakkinda/): Uygulama bilgileri, özellikler ve basın kiti
+- [Gizlilik politikası](https://www.codenzi.com/taktik-gizlilik-politikasi.html)
+- [Kullanım sözleşmesi](https://www.codenzi.com/taktik-kullanim-sozlesmesi.html)
