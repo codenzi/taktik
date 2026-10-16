@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
-    <link rel="preload" as="image" href="img/ss-anasayfa.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="img/ss-anasayfa.webp?v=2" fetchpriority="high">
 
     <script type="application/ld+json">
     {
@@ -184,7 +184,7 @@
         .rating { display: inline-flex; align-items: center; gap: 6px; }
         .laurel { position: relative; width: 21px; height: 44px; overflow: hidden; flex-shrink: 0; }
         .laurel img { position: absolute; height: 117px; width: auto; max-width: none; left: -28px; top: -36px; }
-        .laurel.r { transform: scaleX(-1); }
+        .laurel:not(.r) { transform: scaleX(-1); }
         .rating-body { text-align: center; line-height: 1.15; }
         .rating-body strong { display: block; font-size: 22px; font-weight: 800; }
         .stars { display: inline-flex; gap: 1px; color: var(--sun); }
@@ -198,8 +198,8 @@
         .hero-visual { position: relative; height: 640px; }
         .hero-visual .phone { position: absolute; width: 270px; filter: drop-shadow(0 40px 50px rgba(11, 22, 48, .28)); }
         .hero-visual .p-center { left: 50%; top: 0; width: 300px; transform: translateX(-50%); z-index: 3; animation: float 7s ease-in-out infinite; }
-        .hero-visual .p-left { left: 0; top: 70px; transform: rotate(-8deg); z-index: 2; opacity: .96; }
-        .hero-visual .p-right { right: 0; top: 70px; transform: rotate(8deg); z-index: 2; opacity: .96; }
+        .hero-visual .p-left { left: 0; top: 70px; transform: rotate(-8deg); z-index: 2; }
+        .hero-visual .p-right { right: 0; top: 70px; transform: rotate(8deg); z-index: 2; }
         @keyframes float { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -14px); } }
 
         .chip {
@@ -392,7 +392,7 @@
 
         /* ---------- Footer ---------- */
         footer.site { padding: 24px 0 40px; }
-        .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+        .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
         .foot-grid p { color: var(--muted); font-size: 15px; margin-top: 16px; max-width: 340px; }
         .foot-grid h4 { font-size: 14px; font-weight: 800; letter-spacing: .02em; margin-bottom: 16px; }
         .foot-grid ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
@@ -475,8 +475,8 @@
             .hero-visual { height: 440px; margin-top: 8px; }
             .hero-visual .phone { width: 160px; }
             .hero-visual .p-center { width: 205px; }
-            .hero-visual .p-left { left: -18px; top: 70px; opacity: .9; }
-            .hero-visual .p-right { right: -18px; top: 70px; opacity: .9; }
+            .hero-visual .p-left { left: -18px; top: 70px; }
+            .hero-visual .p-right { right: -18px; top: 70px; }
             .proof .proof-stat:last-child { display: none; }
             .store-btn { min-width: 168px; }
             .chip { font-size: 12px; padding: 8px 12px 8px 8px; }
@@ -590,9 +590,9 @@
                 </div>
 
                 <div class="hero-visual" aria-hidden="true">
-                    <img class="phone p-left" src="img/ss-soru-cozucu.webp" alt="" width="640" height="1320">
-                    <img class="phone p-right" src="img/ss-haftalik-plan.webp" alt="" width="640" height="1320">
-                    <img class="phone p-center" src="img/ss-anasayfa.webp" alt="" width="640" height="1320" fetchpriority="high">
+                    <img class="phone p-left" src="img/ss-soru-cozucu.webp?v=2" alt="" width="640" height="1320">
+                    <img class="phone p-right" src="img/ss-haftalik-plan.webp?v=2" alt="" width="640" height="1320">
+                    <img class="phone p-center" src="img/ss-anasayfa.webp?v=2" alt="" width="640" height="1320" fetchpriority="high">
                     <div class="chip chip-1">
                         <img src="logo_inapp.webp" alt="">
                         <div>Taktik Tavşan<small>Kafan karışık mı? Strateji konuşalım.</small></div>
@@ -667,12 +667,12 @@
 
                     <div class="stage">
                         <div class="screens">
-                            <img class="active" src="img/ss-soru-cozucu.webp" alt="Taktik soru çözücü ekranı" width="640" height="1320">
-                            <img src="img/ss-haftalik-plan.webp" alt="Taktik haftalık plan ekranı" width="640" height="1320" loading="lazy">
-                            <img src="img/ss-ozel-ders.webp" alt="Taktik özel ders ekranı" width="640" height="1320" loading="lazy">
-                            <img src="img/ss-podcast.webp" alt="Taktik podcast ekranı" width="640" height="1320" loading="lazy">
-                            <img src="img/ss-oyunlar.webp" alt="Taktik oyunları ekranı" width="640" height="1320" loading="lazy">
-                            <img src="img/ss-deneme-analizi.webp" alt="Taktik deneme analizi ekranı" width="640" height="1320" loading="lazy">
+                            <img class="active" src="img/ss-soru-cozucu.webp?v=2" alt="Taktik soru çözücü ekranı" width="640" height="1320">
+                            <img src="img/ss-haftalik-plan.webp?v=2" alt="Taktik haftalık plan ekranı" width="640" height="1320" loading="lazy">
+                            <img src="img/ss-ozel-ders.webp?v=2" alt="Taktik özel ders ekranı" width="640" height="1320" loading="lazy">
+                            <img src="img/ss-podcast.webp?v=2" alt="Taktik podcast ekranı" width="640" height="1320" loading="lazy">
+                            <img src="img/ss-oyunlar.webp?v=2" alt="Taktik oyunları ekranı" width="640" height="1320" loading="lazy">
+                            <img src="img/ss-deneme-analizi.webp?v=2" alt="Taktik deneme analizi ekranı" width="640" height="1320" loading="lazy">
                         </div>
                     </div>
                     <p class="tab-desc" id="tabDesc" aria-live="polite"></p>
@@ -683,26 +683,26 @@
         <!-- GALLERY -->
         <section class="gallery" aria-label="Uygulama ekran görüntüleri">
             <div class="marquee">
-                <img src="img/ss-anasayfa.webp" alt="Ana sayfa" width="640" height="1320" loading="lazy">
-                <img src="img/ss-harita.webp" alt="İnteraktif Türkiye haritası" width="640" height="1320" loading="lazy">
-                <img src="img/ss-etut-odasi.webp" alt="Etüt odası" width="640" height="1320" loading="lazy">
-                <img src="img/ss-podcast.webp" alt="Podcast" width="640" height="1320" loading="lazy">
-                <img src="img/ss-donusturucu.webp" alt="Dönüştürücü" width="640" height="1320" loading="lazy">
-                <img src="img/ss-deneme-analizi.webp" alt="Deneme analizi" width="640" height="1320" loading="lazy">
-                <img src="img/ss-oyunlar.webp" alt="Taktik oyunları" width="640" height="1320" loading="lazy">
-                <img src="img/ss-ozel-ders.webp" alt="Özel ders" width="640" height="1320" loading="lazy">
-                <img src="img/ss-haftalik-plan.webp" alt="Haftalık plan" width="640" height="1320" loading="lazy">
-                <img src="img/ss-soru-cozucu.webp" alt="Soru çözücü" width="640" height="1320" loading="lazy">
-                <img src="img/ss-anasayfa.webp" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
-                <img src="img/ss-harita.webp" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
-                <img src="img/ss-etut-odasi.webp" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
-                <img src="img/ss-podcast.webp" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
-                <img src="img/ss-donusturucu.webp" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
-                <img src="img/ss-deneme-analizi.webp" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
-                <img src="img/ss-oyunlar.webp" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
-                <img src="img/ss-ozel-ders.webp" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
-                <img src="img/ss-haftalik-plan.webp" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
-                <img src="img/ss-soru-cozucu.webp" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
+                <img src="img/ss-anasayfa.webp?v=2" alt="Ana sayfa" width="640" height="1320" loading="lazy">
+                <img src="img/ss-harita.webp?v=2" alt="İnteraktif Türkiye haritası" width="640" height="1320" loading="lazy">
+                <img src="img/ss-etut-odasi.webp?v=2" alt="Etüt odası" width="640" height="1320" loading="lazy">
+                <img src="img/ss-podcast.webp?v=2" alt="Podcast" width="640" height="1320" loading="lazy">
+                <img src="img/ss-donusturucu.webp?v=2" alt="Dönüştürücü" width="640" height="1320" loading="lazy">
+                <img src="img/ss-deneme-analizi.webp?v=2" alt="Deneme analizi" width="640" height="1320" loading="lazy">
+                <img src="img/ss-oyunlar.webp?v=2" alt="Taktik oyunları" width="640" height="1320" loading="lazy">
+                <img src="img/ss-ozel-ders.webp?v=2" alt="Özel ders" width="640" height="1320" loading="lazy">
+                <img src="img/ss-haftalik-plan.webp?v=2" alt="Haftalık plan" width="640" height="1320" loading="lazy">
+                <img src="img/ss-soru-cozucu.webp?v=2" alt="Soru çözücü" width="640" height="1320" loading="lazy">
+                <img src="img/ss-anasayfa.webp?v=2" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
+                <img src="img/ss-harita.webp?v=2" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
+                <img src="img/ss-etut-odasi.webp?v=2" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
+                <img src="img/ss-podcast.webp?v=2" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
+                <img src="img/ss-donusturucu.webp?v=2" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
+                <img src="img/ss-deneme-analizi.webp?v=2" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
+                <img src="img/ss-oyunlar.webp?v=2" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
+                <img src="img/ss-ozel-ders.webp?v=2" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
+                <img src="img/ss-haftalik-plan.webp?v=2" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
+                <img src="img/ss-soru-cozucu.webp?v=2" alt="" aria-hidden="true" width="640" height="1320" loading="lazy">
             </div>
         </section>
 
@@ -720,20 +720,20 @@
                         <span class="c-ico" style="background:linear-gradient(135deg,#7B5CFF,#5B3DF5)"><svg><use href="#i-sparkle"/></svg></span>
                         <h3>Dönüştürücü</h3>
                         <p>PDF'lerini ve ders notlarını saniyeler içinde özete, bilgi kartına ve test sorularına çevir.</p>
-                        <div class="shot-img"><img src="img/ss-donusturucu.webp" alt="Dönüştürücü ekranı" width="640" height="1320" loading="lazy"></div>
+                        <div class="shot-img"><img src="img/ss-donusturucu.webp?v=2" alt="Dönüştürücü ekranı" width="640" height="1320" loading="lazy"></div>
                     </article>
                     <article class="card span-2 shot tint-blue reveal">
                         <span class="c-ico" style="background:linear-gradient(135deg,#1E9BD7,#0B83C1)"><svg><use href="#i-book"/></svg></span>
                         <h3>Etüt Odası</h3>
                         <p>Zayıf olduğun konulara özel, nokta atışı konu anlatımları ve testler.</p>
-                        <div class="shot-img"><img src="img/ss-etut-odasi.webp" alt="Etüt odası ekranı" width="640" height="1320" loading="lazy"></div>
+                        <div class="shot-img"><img src="img/ss-etut-odasi.webp?v=2" alt="Etüt odası ekranı" width="640" height="1320" loading="lazy"></div>
                     </article>
                     <article class="card span-2 shot tint-green reveal">
                         <span class="badge-new">Yeni</span>
                         <span class="c-ico" style="background:linear-gradient(135deg,#22C55E,#16A34A)"><svg><use href="#i-map"/></svg></span>
                         <h3>İnteraktif Türkiye Haritası</h3>
                         <p>Coğrafyayı ezberlemek yerine harita üzerinde keşfet, oyunlarla pekiştir.</p>
-                        <div class="shot-img"><img src="img/ss-harita.webp" alt="Türkiye haritası ekranı" width="640" height="1320" loading="lazy"></div>
+                        <div class="shot-img"><img src="img/ss-harita.webp?v=2" alt="Türkiye haritası ekranı" width="640" height="1320" loading="lazy"></div>
                     </article>
                     <article class="card span-2 reveal">
                         <span class="c-ico" style="background:linear-gradient(135deg,#FF9F1C,#F97316)"><svg><use href="#i-mind"/></svg></span>
@@ -801,22 +801,22 @@
                     <figure class="review reveal" style="margin:0">
                         <span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
                         <p>“Gördüğüm en iyi sınav uygulaması.”</p>
-                        <footer><b>Erdem</b><span>Google Play</span></footer>
+                        <footer><span>Google Play kullanıcısı</span></footer>
                     </figure>
                     <figure class="review reveal" style="margin:0">
                         <span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
                         <p>“Bütün deneme sınavlarımın sonuçlarını tek bi ekrandan görebilmem çok işime yaradı, ayrıca bana özel haftalık plan yapmasıda oldukça güzel bir özellik.”</p>
-                        <footer><b>tevretfikfik</b><span>App Store</span></footer>
+                        <footer><span>App Store kullanıcısı</span></footer>
                     </figure>
                     <figure class="review reveal" style="margin:0">
                         <span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
                         <p>“Bence bir dershaneye bir sürü para vermek yerine o paranın çok küçük bir dilimini buraya verip düzenli çalışarak çok daha verimli bir sonuç alınabilir.”</p>
-                        <footer><b>Elif Ç.</b><span>Google Play</span></footer>
+                        <footer><span>Google Play kullanıcısı</span></footer>
                     </figure>
                     <figure class="review reveal" style="margin:0">
                         <span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
                         <p>“Efsane uygulama sıfır reklam valla helal olsun yapanlara. Değişik bir uygulama insan içinden çıkamıyor :))”</p>
-                        <footer><b>y0unes88</b><span>App Store</span></footer>
+                        <footer><span>App Store kullanıcısı</span></footer>
                     </figure>
                 </div>
             </div>
@@ -901,14 +901,6 @@
                         <li><a href="#sss">SSS</a></li>
                         <li><a href="https://apps.apple.com/tr/app/taktik-ai-s%C4%B1navlara-haz%C4%B1rl%C4%B1k/id6755930518" target="_blank" rel="noopener">App Store</a></li>
                         <li><a href="https://play.google.com/store/apps/details?id=com.codenzi.taktik" target="_blank" rel="noopener">Google Play</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Sınavlar</h4>
-                    <ul>
-                        <li><a href="https://www.codenzi.com/taktik-yks.html">YKS</a></li>
-                        <li><a href="https://www.codenzi.com/taktik-lgs.html">LGS</a></li>
-                        <li><a href="https://www.codenzi.com/taktik-kpss.html">KPSS</a></li>
                     </ul>
                 </div>
                 <div>
